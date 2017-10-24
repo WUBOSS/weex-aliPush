@@ -61,7 +61,12 @@ weex-aliPush是一个weex ali推送插件，可以通过weexpack快速集成，�
 }
 - (void)onMessageReceived:(NSNotification *)notification {
 
-
+    CCPSysMessage *message = [notification object];
+    NSString *title = [[NSString alloc] initWithData:message.title encoding:NSUTF8StringEncoding];
+    NSString *body = [[NSString alloc] initWithData:message.body encoding:NSUTF8StringEncoding];
+    NSLog(@"Receive message title: %@, content: %@.", title, body);
+     NSLog(@"Receive message title: %@, ", notification.userInfo);
+    [[NSNotificationCenter defaultCenter] postNotificationName:AliPushMessageReceive object:nil userInfo:@{@"title":title?title:@"",@"body":body?body:@""}];
     }
 - (void)registerRemoteNotification {
     /*
@@ -103,13 +108,13 @@ weex-aliPush是一个weex ali推送插件，可以通过weexpack快速集成，�
 }
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     // 将收到的APNs信息传给个推统计
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:AliPushNotificationReceive object:nil userInfo:userInfo];
     [CloudPushSDK sendNotificationAck:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
 }
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(nonnull void (^)(void))completionHandler {
     
-    
+     [[NSNotificationCenter defaultCenter] postNotificationName:AliPushNotificationClick object:nil userInfo:response.notification.request.content.userInfo];
     [CloudPushSDK sendNotificationAck:response.notification.request.content.userInfo];
     completionHandler();
 }
