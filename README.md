@@ -44,7 +44,7 @@ weex-aliPush是一个weex ali推送插件，可以通过weexpack快速集成，�
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    [CloudPushSDK asyncInit:@"24663160" appSecret:@"149a9c56d044fdf100d01008f39f6162" callback:^(CloudPushCallbackResult *res) {
+    [CloudPushSDK asyncInit:@"" appSecret:@"" callback:^(CloudPushCallbackResult *res) {
         if (res.success) {
             NSLog(@"Push SDK init success, deviceId: %@.", [CloudPushSDK getDeviceId]);
         } else {
@@ -108,6 +108,7 @@ weex-aliPush是一个weex ali推送插件，可以通过weexpack快速集成，�
     completionHandler(UIBackgroundFetchResultNewData);
 }
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(nonnull void (^)(void))completionHandler {
+    
     
     [CloudPushSDK sendNotificationAck:response.notification.request.content.userInfo];
     completionHandler();

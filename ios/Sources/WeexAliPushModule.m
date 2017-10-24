@@ -8,6 +8,7 @@
 
 #import "WeexAliPushModule.h"
 #import <WeexPluginLoader/WeexPluginLoader.h>
+#import <CloudPushSDK/CloudPushSDK.h>
 NSString * const AliPushNotificationReceive=@"AliPushNotificationReceive";
 NSString * const AliPushMessageReceive=@"AliPushMessageReceive";
 NSString * const AliPushNotificationClick=@"AliPushNotificationClick";
@@ -17,10 +18,19 @@ WX_PlUGIN_EXPORT_MODULE(weexAliPush, WeexAliPushModule)
 WX_EXPORT_METHOD(@selector(receiveNotification:))
 WX_EXPORT_METHOD(@selector(receiveAlimessage:))
 WX_EXPORT_METHOD(@selector(notifacationClick:))
+WX_EXPORT_METHOD(@selector(getCid:))
 -(void)receiveNotification:(WXKeepAliveCallback)callBack
 {
     self.notification = callBack;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(aliPush:) name:AliPushNotificationReceive object:nil];
+}
+-(void)getCid:(WXCallback)callBack
+{
+    
+    if(callBack)
+    {
+        callBack([CloudPushSDK getDeviceId]);
+    }
 }
 -(void)receiveAlimessage:(WXKeepAliveCallback)callBack
 {

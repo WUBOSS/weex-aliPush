@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1A60D31063120FA8947259BA /* libPods-WeexAliPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6060EA1C43BAE7D91993F5E8 /* libPods-WeexAliPush.a */; };
+		8D66D6F91F9F04850064C0C0 /* AlicloudUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D66D6F81F9F01670064C0C0 /* AlicloudUtils.framework */; };
+		8D66D6FA1F9F04880064C0C0 /* UTDID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D66D6F71F9F01670064C0C0 /* UTDID.framework */; };
+		8D66D6FB1F9F048A0064C0C0 /* CloudPushSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D66D6F61F9EF15D0064C0C0 /* CloudPushSDK.framework */; };
 		C45843F01E84EF7B00D88C0B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C45843EF1E84EF7B00D88C0B /* Info.plist */; };
 		C45843FC1E84F39100D88C0B /* WeexAliPushModule.h in Headers */ = {isa = PBXBuildFile; fileRef = C45843F61E84F39100D88C0B /* WeexAliPushModule.h */; };
 		C45843FD1E84F39100D88C0B /* WeexAliPushModule.m in Sources */ = {isa = PBXBuildFile; fileRef = C45843F71E84F39100D88C0B /* WeexAliPushModule.m */; };
@@ -32,6 +35,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A60D31063120FA8947259BA /* libPods-WeexAliPush.a in Frameworks */,
+				8D66D6F91F9F04850064C0C0 /* AlicloudUtils.framework in Frameworks */,
+				8D66D6FA1F9F04880064C0C0 /* UTDID.framework in Frameworks */,
+				8D66D6FB1F9F048A0064C0C0 /* CloudPushSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +319,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Sources",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -333,6 +343,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Sources",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
