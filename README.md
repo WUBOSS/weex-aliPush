@@ -112,6 +112,12 @@ weex-aliPush是一个weex ali推送插件，可以通过weexpack快速集成，�
     [CloudPushSDK sendNotificationAck:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
 }
+
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:AliPushNotificationReceive object:nil userInfo:notification.request.content.userInfo];
+    completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionAlert|UNNotificationPresentationOptionSound);
+}
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(nonnull void (^)(void))completionHandler {
     
      [[NSNotificationCenter defaultCenter] postNotificationName:AliPushNotificationClick object:nil userInfo:response.notification.request.content.userInfo];
